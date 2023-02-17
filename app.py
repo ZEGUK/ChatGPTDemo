@@ -4,7 +4,7 @@ import openai
 app = Flask(__name__)
 
 # 使用 OpenAI API 进行聊天
-openai.api_key = "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"
+openai.api_key = 'YOUR_API_KEY'
 
 @app.route('/')
 def index():
