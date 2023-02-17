@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Demo</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        #chatbox {
+            margin: 10px auto;
+            width: 1000px;
+            border: 1px solid #ddd;
+            background-color: #fff;
+        }
+        #chatbox .header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 0px;
+        }
+        #chatbox .messages {
+            max-height: 1000px;
+            overflow: auto;
+            padding: 1px;
+        }
+        #chatbox .message {
+            margin: 10px 0;
+        }
+        #chatbox .message .sender {
+            font-weight: bold;
+        }
+        #chatbox .message .text {
+            margin-top: 10px;
+        }
+        #chatbox .footer {
+            padding: 20px;
+            background-color: #eee;
+        }
+        #chatbox input[type="text"] {
+            width: 100%;
+            padding: 1px;
+            border: none;
+            border-top: 1px solid #ddd;
+            font-size: 16px;
+        }
+        #chatbox input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+    <script>
+        // 在页面加载完成后，将聊天框滚动到底部
+        window.onload = function() {
+            var messages = document.getElementById('messages');
+            messages.scrollTop = messages.scrollHeight;
+        };
+
+        // 处理用户输入
+        function sendMessage() {
+            // 获取用户输入的消息
+            var message = document.getElementById('message').value;
+
+            // 将消息显示在聊天框中
+            var messages = document.getElementById('messages');
+            messages.innerHTML += '<div class="message"><div class="sender">You:</div><div class="text">' + message + '</div></div>';
+            messages.scrollTop = messages.scrollHeight;
+
+            // 将消息发送到服务器
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/chat');
+            xhr.setRequestHeader('Content-Type', 'application/json');
+            xhr.onload = function() {
+                var response = JSON.parse(xhr.responseText);
+
+                // 将机器人的回复显示在聊天框中
+                messages.innerHTML += '<div class="message"><div class="sender">Chatbot:</div><div class="text">' + response.answer + '</div></div>';
+                messages.scrollTop = messages.scrollHeight;
+            };
+            xhr.send(JSON.stringify({ message: message }));
+
+            // 清空输入框
+            document.getElementById('message').value = '';
+        }
+    </script>
+</head>
+<body>
+    <div id="chatbox">
+        <div class="header">Chatbot Demo</div>
+        <div class="messages" id="messages"></div>
+        <div class="footer">
+            <input type="text" id="message" placeholder="Type your message here">
+            <input type="submit" value="Send" onclick="sendMessage()">
+        </div>
