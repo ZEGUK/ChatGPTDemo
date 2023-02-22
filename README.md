@@ -12,8 +12,9 @@ git clone https://github.com/ZEGUK/ChatGPTDemo.git
 
 <aside>
 💡 index.html for front render template.
-  
 
+Modify with your own OpenAI API Key and save file.
+  
 </aside>
 
 Run the application in [localhost](http://localhost) to validating that the web app is ready.
@@ -48,7 +49,8 @@ git remote add azure <git-deployment-url>
 本地repo commit:
 
 ```bash
-git commit -m ‘message’
+git add app.py
+git commit -m 'message'
 ```
 
 ```bash
