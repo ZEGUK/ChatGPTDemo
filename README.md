@@ -36,11 +36,11 @@ flask run
 - Then, deploy our app to Azure App Service. Here, we choose Local Git. 在本地存储库中，配置一个指向 Azure 的、以将代码推送到 Azure 的 [Git remote 命令](https://git-scm.com/book/en/v2/Git-Basics-Working-with-Remotes)可以使用 Azure 门户或 Azure CLI 检索用于配置的远程存储库 URL 和 Git 凭据。
 
 <aside>
-💡 Username: $chatGPTAppdemo
+💡 Username: $chatGPTAppdemo, for example.
 
 </aside>
 
-git-deployment-url: [https://chatgptappdemo.scm.azurewebsites.net:443/chatGPTAppdemo.git](https://chatgptappdemo.scm.azurewebsites.net/chatGPTAppdemo.git)
+to get git-deployment-url: your web app -> Deployment Center -> Settings -> Git Clone URI
 
 ```bash
 git remote add azure <git-deployment-url>
@@ -59,8 +59,6 @@ git push azure
 git push azure main: master
 ```
 
-- When complete the deployment, you can find URL of the App Service
-
-[https://chatgptappdemo.azurewebsites.net](https://chatgptappdemo.azurewebsites.net/).
+- When complete the deployment, you can find URL of the App Service https://xxxxxx.azurewebsites.net
 
 Now, you can browse your Chatbot web application.
