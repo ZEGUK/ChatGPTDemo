@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify,render_template
 import openai
+import os
 
 app = Flask(__name__)
 
 # 使用 OpenAI API 进行聊天
-openai.api_key = 'YOUR_API_KEY'
+openai.api_key = os.getenv('YOUR_API_KEY')
 # 使用Azure OpenAI
 #openai.api_key = "REPLACE_WITH_YOUR_API_KEY_HERE"
 #openai.api_base =  "REPLACE_WITH_YOUR_ENDPOINT_HERE" # your endpoint should look like the following https://YOUR_RESOURCE_NAME.openai.azure.com/
