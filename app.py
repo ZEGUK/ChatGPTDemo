@@ -5,6 +5,11 @@ app = Flask(__name__)
 
 # 使用 OpenAI API 进行聊天
 openai.api_key = 'YOUR_API_KEY'
+# 使用Azure OpenAI
+#openai.api_key = "REPLACE_WITH_YOUR_API_KEY_HERE"
+#openai.api_base =  "REPLACE_WITH_YOUR_ENDPOINT_HERE" # your endpoint should look like the following https://YOUR_RESOURCE_NAME.openai.azure.com/
+#openai.api_type = 'azure'
+#openai.api_version = '2022-12-01' 
 
 @app.route('/')
 def index():
